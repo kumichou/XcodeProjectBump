@@ -88,6 +88,9 @@ struct VersionUpdater: ParsableCommand {
             previousVersion = versionString
             
             var components = versionString.split(separator: ".").map { Int($0) ?? 0 }
+            while components.count < 3 {
+                components.append(0)
+            }
             
             if major {
                 components[0] += 1
